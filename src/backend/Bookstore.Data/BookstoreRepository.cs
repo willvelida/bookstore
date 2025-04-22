@@ -1,6 +1,6 @@
 namespace Bookstore.Data;
 
-public class BookstoreRepository
+public class BookstoreRepository : IBookstoreRepository
 {
     private static readonly List<Book> _books = new()
     {

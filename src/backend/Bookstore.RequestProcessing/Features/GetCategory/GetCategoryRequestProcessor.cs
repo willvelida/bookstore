@@ -3,6 +3,11 @@ using Bookstore.Dtos;
 
 namespace Bookstore.RequestProcessing.Features.GetCategory;
 
+public interface IGetCategoryRequestProcessor
+{
+    Task<GetCategoryResponse> HandleAsync(GetCategoryRequest request, CancellationToken cancellationToken = default);
+}
+
 public class GetCategoryRequest
 {
     public int CategoryId { get; set; }
@@ -13,11 +18,11 @@ public class GetCategoryResponse
     public CategoryDto? Result { get; set; }
 }
 
-public class GetCategoryRequestProcessor
+public class GetCategoryRequestProcessor : IGetCategoryRequestProcessor
 {
-    private readonly BookstoreRepository _repository;
+    private readonly IBookstoreRepository _repository;
 
-    public GetCategoryRequestProcessor(BookstoreRepository repository)
+    public GetCategoryRequestProcessor(IBookstoreRepository repository)
     {
         _repository = repository;
     }

@@ -3,6 +3,11 @@ using Bookstore.Dtos;
 
 namespace Bookstore.RequestProcessing.Features.GetAllCategories;
 
+public interface IGetAllCategoriesRequestProcessor
+{
+    Task<GetAllCategoriesResponse> HandleAsync(GetAllCategoriesRequest request, CancellationToken cancellationToken = default);
+}
+
 public class GetAllCategoriesRequest
 {
     // No parameters needed for getting all categories
@@ -13,11 +18,11 @@ public class GetAllCategoriesResponse
     public List<CategoryDto> Categories { get; set; } = new List<CategoryDto>();
 }
 
-public class GetAllCategoriesRequestProcessor
+public class GetAllCategoriesRequestProcessor : IGetAllCategoriesRequestProcessor
 {
-    private readonly BookstoreRepository _repository;
+    private readonly IBookstoreRepository _repository;
 
-    public GetAllCategoriesRequestProcessor(BookstoreRepository repository)
+    public GetAllCategoriesRequestProcessor(IBookstoreRepository repository)
     {
         _repository = repository;
     }

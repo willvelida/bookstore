@@ -3,6 +3,11 @@ using Bookstore.Dtos;
 
 namespace Bookstore.RequestProcessing.Features.GetAuthor;
 
+public interface IGetAuthorRequestProcessor
+{
+    Task<GetAuthorResponse> HandleAsync(GetAuthorRequest request, CancellationToken cancellationToken = default);
+}
+
 public class GetAuthorRequest
 {
     public int AuthorId { get; set; }
@@ -13,11 +18,11 @@ public class GetAuthorResponse
     public AuthorDto? Result { get; set; }
 }
 
-public class GetAuthorRequestProcessor
+public class GetAuthorRequestProcessor : IGetAuthorRequestProcessor
 {
-    private readonly BookstoreRepository _repository;
+    private readonly IBookstoreRepository _repository;
 
-    public GetAuthorRequestProcessor(BookstoreRepository repository)
+    public GetAuthorRequestProcessor(IBookstoreRepository repository)
     {
         _repository = repository;
     }

@@ -3,6 +3,11 @@ using Bookstore.Dtos;
 
 namespace Bookstore.RequestProcessing.Features.GetBook;
 
+public interface IGetBookRequestProcessor
+{
+    Task<GetBookResponse> HandleAsync(GetBookRequest request, CancellationToken cancellationToken = default);
+}
+
 public class GetBookRequest
 {
     public int BookId { get; set; }
@@ -13,11 +18,11 @@ public class GetBookResponse
     public BookDto? Result { get; set; }
 }
 
-public class GetBookRequestProcessor
+public class GetBookRequestProcessor : IGetBookRequestProcessor
 {
-    private readonly BookstoreRepository _repository;
+    private readonly IBookstoreRepository _repository;
 
-    public GetBookRequestProcessor(BookstoreRepository repository)
+    public GetBookRequestProcessor(IBookstoreRepository repository)
     {
         _repository = repository;
     }
