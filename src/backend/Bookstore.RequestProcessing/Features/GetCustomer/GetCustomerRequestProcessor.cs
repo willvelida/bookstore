@@ -22,7 +22,7 @@ public class GetCustomerRequestProcessor
         _repository = repository;
     }
 
-    public async Task<GetCustomerResponse> HandleAsync(GetCustomerRequest request, CancellationToken cancellationToken = default)
+    public Task<GetCustomerResponse> HandleAsync(GetCustomerRequest request, CancellationToken cancellationToken = default)
     {
         // For now, return a hardcoded response
         var customerDto = new CustomerDto
@@ -34,6 +34,6 @@ public class GetCustomerRequestProcessor
             PhoneNumber = $"555-123-{request.CustomerId:D4}"
         };
 
-        return new GetCustomerResponse { Result = customerDto };
+        return Task.FromResult(new GetCustomerResponse { Result = customerDto });
     }
 }

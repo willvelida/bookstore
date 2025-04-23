@@ -27,7 +27,7 @@ public class GetCategoryRequestProcessor : IGetCategoryRequestProcessor
         _repository = repository;
     }
 
-    public async Task<GetCategoryResponse> HandleAsync(GetCategoryRequest request, CancellationToken cancellationToken = default)
+    public Task<GetCategoryResponse> HandleAsync(GetCategoryRequest request, CancellationToken cancellationToken = default)
     {
         // For now, return a hardcoded response
         var categoryDto = new CategoryDto
@@ -37,6 +37,6 @@ public class GetCategoryRequestProcessor : IGetCategoryRequestProcessor
             Description = $"Description for category {request.CategoryId}"
         };
 
-        return new GetCategoryResponse { Result = categoryDto };
+        return Task.FromResult(new GetCategoryResponse { Result = categoryDto });
     }
 }

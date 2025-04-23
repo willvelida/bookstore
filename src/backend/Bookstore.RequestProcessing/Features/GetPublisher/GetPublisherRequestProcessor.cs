@@ -22,7 +22,7 @@ public class GetPublisherRequestProcessor
         _repository = repository;
     }
 
-    public async Task<GetPublisherResponse> HandleAsync(GetPublisherRequest request, CancellationToken cancellationToken = default)
+    public Task<GetPublisherResponse> HandleAsync(GetPublisherRequest request, CancellationToken cancellationToken = default)
     {
         // For now, return a hardcoded response
         var publisherDto = new PublisherDto
@@ -33,6 +33,6 @@ public class GetPublisherRequestProcessor
             Address = $"123 Publisher Street, City {request.PublisherId}"
         };
 
-        return new GetPublisherResponse { Result = publisherDto };
+        return Task.FromResult(new GetPublisherResponse { Result = publisherDto });
     }
 }

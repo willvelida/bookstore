@@ -22,7 +22,7 @@ public class GetAllCustomersRequestProcessor
         _repository = repository;
     }
 
-    public async Task<GetAllCustomersResponse> HandleAsync(GetAllCustomersRequest request, CancellationToken cancellationToken = default)
+    public Task<GetAllCustomersResponse> HandleAsync(GetAllCustomersRequest request, CancellationToken cancellationToken = default)
     {
         // For now, return hardcoded data
         var customers = new List<CustomerDto>
@@ -33,6 +33,6 @@ public class GetAllCustomersRequestProcessor
             new CustomerDto { CustomerId = 4, Name = "Alice Williams", Email = "alice.williams@example.com", Address = "101 Maple Ln, Anywhere", PhoneNumber = "555-456-7890" }
         };
 
-        return new GetAllCustomersResponse { Customers = customers };
+        return Task.FromResult(new GetAllCustomersResponse { Customers = customers });
     }
 }

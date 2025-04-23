@@ -22,7 +22,7 @@ public class GetAllPublishersRequestProcessor
         _repository = repository;
     }
 
-    public async Task<GetAllPublishersResponse> HandleAsync(GetAllPublishersRequest request, CancellationToken cancellationToken = default)
+    public Task<GetAllPublishersResponse> HandleAsync(GetAllPublishersRequest request, CancellationToken cancellationToken = default)
     {
         // For now, return hardcoded data
         var publishers = new List<PublisherDto>
@@ -33,6 +33,6 @@ public class GetAllPublishersRequestProcessor
             new PublisherDto { PublisherId = 4, Name = "Macmillan Publishers", ContactEmail = "inquiry@macmillan.com", Address = "101 Literature Blvd, Sydney" }
         };
 
-        return new GetAllPublishersResponse { Publishers = publishers };
+        return Task.FromResult(new GetAllPublishersResponse { Publishers = publishers });
     }
 }

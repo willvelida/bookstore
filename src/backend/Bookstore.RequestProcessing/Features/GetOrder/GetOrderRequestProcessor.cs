@@ -22,7 +22,7 @@ public class GetOrderRequestProcessor
         _repository = repository;
     }
 
-    public async Task<GetOrderResponse> HandleAsync(GetOrderRequest request, CancellationToken cancellationToken = default)
+    public Task<GetOrderResponse> HandleAsync(GetOrderRequest request, CancellationToken cancellationToken = default)
     {
         // For now, return a hardcoded response
         var orderDto = new OrderDto
@@ -54,6 +54,6 @@ public class GetOrderRequestProcessor
             }
         };
 
-        return new GetOrderResponse { Result = orderDto };
+        return Task.FromResult(new GetOrderResponse { Result = orderDto });
     }
 }

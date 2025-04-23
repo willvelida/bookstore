@@ -1,0 +1,1 @@
+Help me clean up any redundant files in the `src/backend` and `src/tests` folders. Remove any files that are not needed (such as `UnitTest1.cs`) and remove any redudant code. Ensure that the tests still pass after each file that you clean up.

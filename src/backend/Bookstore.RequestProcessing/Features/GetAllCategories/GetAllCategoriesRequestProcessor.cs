@@ -27,7 +27,7 @@ public class GetAllCategoriesRequestProcessor : IGetAllCategoriesRequestProcesso
         _repository = repository;
     }
 
-    public async Task<GetAllCategoriesResponse> HandleAsync(GetAllCategoriesRequest request, CancellationToken cancellationToken = default)
+    public Task<GetAllCategoriesResponse> HandleAsync(GetAllCategoriesRequest request, CancellationToken cancellationToken = default)
     {
         // For now, return hardcoded data
         var categories = new List<CategoryDto>
@@ -38,6 +38,6 @@ public class GetAllCategoriesRequestProcessor : IGetAllCategoriesRequestProcesso
             new CategoryDto { CategoryId = 4, Name = "Fantasy", Description = "Books featuring magic and supernatural elements" }
         };
 
-        return new GetAllCategoriesResponse { Categories = categories };
+        return Task.FromResult(new GetAllCategoriesResponse { Categories = categories });
     }
 }
