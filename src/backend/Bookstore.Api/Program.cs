@@ -42,7 +42,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 // Register repository
-builder.Services.AddTransient<BookstoreRepository>();
+builder.Services.AddTransient<IBookstoreRepository, BookstoreRepository>();
 
 // Register request processors
 // Book processors

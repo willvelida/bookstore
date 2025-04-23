@@ -15,9 +15,9 @@ public class GetPublisherResponse
 
 public class GetPublisherRequestProcessor
 {
-    private readonly BookstoreRepository _repository;
+    private readonly IBookstoreRepository _repository;
 
-    public GetPublisherRequestProcessor(BookstoreRepository repository)
+    public GetPublisherRequestProcessor(IBookstoreRepository repository)
     {
         _repository = repository;
     }

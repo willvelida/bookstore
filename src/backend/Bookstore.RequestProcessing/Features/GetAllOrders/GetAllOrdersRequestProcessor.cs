@@ -15,9 +15,9 @@ public class GetAllOrdersResponse
 
 public class GetAllOrdersRequestProcessor
 {
-    private readonly BookstoreRepository _repository;
+    private readonly IBookstoreRepository _repository;
 
-    public GetAllOrdersRequestProcessor(BookstoreRepository repository)
+    public GetAllOrdersRequestProcessor(IBookstoreRepository repository)
     {
         _repository = repository;
     }
@@ -37,8 +37,8 @@ public class GetAllOrdersRequestProcessor
                 Status = "Shipped",
                 OrderItems = new List<OrderItemDto>
                 {
-                    new OrderItemDto { OrderItemId = 1, BookId = 1, BookTitle = "Programming in C#", Quantity = 1, UnitPrice = 29.99m },
-                    new OrderItemDto { OrderItemId = 2, BookId = 2, BookTitle = "Advanced JavaScript", Quantity = 1, UnitPrice = 21.00m }
+                    new OrderItemDto { OrderId = 1, BookId = 1, BookTitle = "Programming in C#", Quantity = 1, UnitPrice = 29.99m, Discount = 0 },
+                    new OrderItemDto { OrderId = 1, BookId = 2, BookTitle = "Advanced JavaScript", Quantity = 1, UnitPrice = 21.00m, Discount = 0 }
                 }
             },
             new OrderDto 
@@ -51,7 +51,7 @@ public class GetAllOrdersRequestProcessor
                 Status = "Delivered",
                 OrderItems = new List<OrderItemDto>
                 {
-                    new OrderItemDto { OrderItemId = 3, BookId = 3, BookTitle = "The Great Novel", Quantity = 1, UnitPrice = 34.95m }
+                    new OrderItemDto { OrderId = 2, BookId = 3, BookTitle = "The Great Novel", Quantity = 1, UnitPrice = 34.95m, Discount = 0 }
                 }
             },
             new OrderDto 
@@ -64,7 +64,7 @@ public class GetAllOrdersRequestProcessor
                 Status = "Delivered",
                 OrderItems = new List<OrderItemDto>
                 {
-                    new OrderItemDto { OrderItemId = 4, BookId = 4, BookTitle = "Cooking for Beginners", Quantity = 2, UnitPrice = 23.99m }
+                    new OrderItemDto { OrderId = 3, BookId = 4, BookTitle = "Cooking for Beginners", Quantity = 2, UnitPrice = 23.99m, Discount = 0 }
                 }
             }
         };

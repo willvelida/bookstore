@@ -15,9 +15,9 @@ public class GetOrderResponse
 
 public class GetOrderRequestProcessor
 {
-    private readonly BookstoreRepository _repository;
+    private readonly IBookstoreRepository _repository;
 
-    public GetOrderRequestProcessor(BookstoreRepository repository)
+    public GetOrderRequestProcessor(IBookstoreRepository repository)
     {
         _repository = repository;
     }
@@ -37,19 +37,21 @@ public class GetOrderRequestProcessor
             {
                 new OrderItemDto
                 {
-                    OrderItemId = 1,
+                    OrderId = request.OrderId,
                     BookId = 1,
                     BookTitle = "Sample Book 1",
                     Quantity = 2,
-                    UnitPrice = 15.99m
+                    UnitPrice = 15.99m,
+                    Discount = 0
                 },
                 new OrderItemDto
                 {
-                    OrderItemId = 2,
+                    OrderId = request.OrderId,
                     BookId = 3,
                     BookTitle = "Sample Book 3",
                     Quantity = 1,
-                    UnitPrice = 19.01m
+                    UnitPrice = 19.01m,
+                    Discount = 0
                 }
             }
         };

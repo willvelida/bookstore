@@ -15,9 +15,9 @@ public class GetCustomerResponse
 
 public class GetCustomerRequestProcessor
 {
-    private readonly BookstoreRepository _repository;
+    private readonly IBookstoreRepository _repository;
 
-    public GetCustomerRequestProcessor(BookstoreRepository repository)
+    public GetCustomerRequestProcessor(IBookstoreRepository repository)
     {
         _repository = repository;
     }

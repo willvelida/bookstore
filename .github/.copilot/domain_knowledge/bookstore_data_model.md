@@ -80,11 +80,11 @@
 
 ### 7. **OrderItem**
 - **Attributes**:
-  - OrderItemID (Primary Key)
-  - OrderID (Foreign Key)
-  - BookID (Foreign Key)
+  - OrderID (Primary Key, Foreign Key)
+  - BookID (Primary Key, Foreign Key)
   - Quantity
   - UnitPrice
+  - Discount
 - **Relationships**:
   - Linked to one **Order**
   - Linked to one **Book**
@@ -202,11 +202,11 @@ erDiagram
     }
     
     ORDERITEM {
-        int OrderItemID PK
-        int OrderID FK
-        int BookID FK
+        int OrderID PK,FK
+        int BookID PK,FK
         int Quantity
         decimal UnitPrice
+        decimal Discount
     }
     
     REVIEW {
@@ -276,13 +276,15 @@ erDiagram
   - A customer can place **many orders**
   - Each order belongs to **one customer**
 
-- **Order → OrderItem** (One-to-Many)
+- **Order ↔ OrderItem** (One-to-Many)
   - An order contains **multiple order items**
   - Each order item belongs to **one order**
+  - **OrderItem** uses a composite primary key (OrderID, BookID)
 
-- **OrderItem → Book** (Many-to-One)
-  - Each order item references **one book**
+- **Book ↔ OrderItem** (One-to-Many)
   - A book can appear in **many order items**
+  - Each order item references **one book**
+  - **OrderItem** uses a composite primary key (OrderID, BookID)
 
 - **Customer ↔ Review** (One-to-Many)
   - A customer can write **many reviews**
@@ -304,4 +306,4 @@ erDiagram
   - Each cart item references **one book**
   - A book can appear in **many cart items**
 
-This structure provides the foundation for a bookstore e-commerce application while maintaining the relationships between Books, Authors, Publishers, and other key entities. The many-to-many relationships are properly implemented with join tables using composite primary keys.
+This structure provides the foundation for a bookstore e-commerce application while maintaining the relationships between Books, Authors, Publishers, and other key entities. The many-to-many relationships are properly implemented with join tables using composite primary keys. The OrderItem table now follows the Northwind approach with a composite primary key (OrderID, BookID).
