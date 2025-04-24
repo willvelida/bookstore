@@ -1,6 +1,65 @@
-@Bookstore.Api_HostAddress = http://localhost:5223
+@Bookstore.Api_HostAddress = "http://localhost:5223"
 
-GET {{Bookstore.Api_HostAddress}}/weatherforecast/
+### Book Endpoints ###
+
+# Get book by ID
+GET {{Bookstore.Api_HostAddress}}/api/books/1
 Accept: application/json
 
-###
+### Author Endpoints ###
+
+# Get author by ID
+GET {{Bookstore.Api_HostAddress}}/api/authors/1
+Accept: application/json
+
+### Category Endpoints ###
+
+# Get all categories
+GET {{Bookstore.Api_HostAddress}}/api/categories
+Accept: application/json
+
+# Get category by ID
+GET {{Bookstore.Api_HostAddress}}/api/categories/1
+Accept: application/json
+
+### Publisher Endpoints ###
+
+# Get all publishers
+GET {{Bookstore.Api_HostAddress}}/api/publishers
+Accept: application/json
+
+# Get publisher by ID
+GET {{Bookstore.Api_HostAddress}}/api/publishers/1
+Accept: application/json
+
+### Customer Endpoints ###
+
+# Get all customers
+GET {{Bookstore.Api_HostAddress}}/api/customers
+Accept: application/json
+
+# Get customer by ID
+GET {{Bookstore.Api_HostAddress}}/api/customers/1
+Accept: application/json
+
+### Order Endpoints ###
+
+# Get all orders
+GET {{Bookstore.Api_HostAddress}}/api/orders
+Accept: application/json
+
+# Get order by ID
+GET {{Bookstore.Api_HostAddress}}/api/orders/1
+Accept: application/json
+
+### Review Endpoints ###
+
+# Get reviews for a book
+GET {{Bookstore.Api_HostAddress}}/api/books/1/reviews
+Accept: application/json
+
+### Cart Endpoints ###
+
+# Get customer cart
+GET {{Bookstore.Api_HostAddress}}/api/customers/1/cart
+Accept: application/json
